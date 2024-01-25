@@ -132,3 +132,38 @@ function sortColleagues(
   console.log(sortColleagues(colleagues.current, (a, b) => a.contact.extension - b.contact.extension, 3));
   console.log(sortColleagues(colleagues.current, (a, b) => a.name.length - b.name.length, 1));
   console.log(sortColleagues(colleagues.current, (a, b) => a.name.length - b.name.length)); // NEW
+
+
+// New function: addInterest
+  function addInterest(friend: Friend, interest: string): string[] {
+    if (!friend.interests) {
+      friend.interests = []; // Create the interests array if it doesn't exist
+    }
+  
+    friend.interests.push(interest);
+    return friend.interests;
+  }
+  
+  // Test invocation
+  console.log(addInterest(friends[0], 'Politics'));
+  console.log(friends[0]);
+
+  // New function: removeInterest
+  function removeInterest(friend: Friend, interest: string): string[] {
+    if (!friend.interests) {
+      return [];
+    }
+
+    const index = friend.interests.indexOf(interest);
+    if (index === -1) {
+      return friend.interests;
+    }
+
+    const newInterests = [...friend.interests];
+    newInterests.splice(index, 1);
+    return newInterests;
+  }
+  // Test removal of an existing interest
+  console.log(removeInterest(friends[0], 'Politics'));
+  console.log(friends[0]);
+
